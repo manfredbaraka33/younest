@@ -1,0 +1,259 @@
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.toggle-btn {
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: #f1f1f1;
+  margin-left: 0;
+}
+
+
+
+.sidebar {
+  flex: 3;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  position: fixed;
+  top: 50px;
+  z-index: 50;
+  background-color:black;
+  transition: width 0.3s ease;
+}
+
+
+.sidebar.closed {
+ width: 0;
+}
+
+.sidebar.open {
+  width: 18rem;
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(179, 179, 179);
+}
+
+.sidebar::-webkit-scrollbar{
+  display: none;
+}
+
+.sidebarWrapper {
+  padding: 20px;
+}
+
+.sidebarList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebarListItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul a{
+  border-radius: 10px;
+  border: 1px solid limegreen;
+  padding: 8px;
+  width: 100%;
+}
+
+.sidebarIcon {
+  margin-right: 15px;
+}
+
+.sidebarButton {
+  width: 150px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.sidebarHr {
+  margin: 20px 0;
+}
+
+.sidebarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.filter-pane::-webkit-scrollbar{
+  display: none;
+}
+
+.filter-pane {
+  overflow: auto; /* or overflow: scroll; */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+ 
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 0.8rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 65%;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+
+.animated-card {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+}
+
+
+table{
+  width: 100%;
+}
+
+table tr{
+ padding: 10px;
+ 
+}
+table th{
+  color: white;
+  padding: 10px;
+}
+
+table td{
+  background-color: whitesmoke;
+ padding: 10px;
+ border-bottom: 1px solid gray;
+}
+
+
+
+.follow-btn {
+  background-color: rgb(19, 93, 19);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.unfollow-btn {
+  background-color: rgb(152, 27, 27);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Custom modal content styling */
+.custom-modal-content {
+  width: 100%;
+  max-width: 500px; /* Max width for the modal */
+  margin: auto; /* Centers the modal horizontally */
+  position: relative;
+}
+
+/* Custom backdrop styling */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.7) !important; /* Dark transparent backdrop */
+}
+
+/* Ensure the modal is centered vertically and horizontally */
+.ReactModal__Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute; /* Absolute positioning to center */
+  top: 40%; /* Center the modal vertically */
+  left: 50%; /* Center the modal horizontally */
+  transform: translate(-50%, -50%); /* Offset the modal to account for its size */
+  min-width: 300px; /* Optional: set a minimum width */
+  max-width: 500px; /* Optional: set a maximum width */
+  z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
