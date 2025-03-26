@@ -33,7 +33,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/register/", form, {
+      const response = await axios.post("https://younest.onrender.com/api/register/", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setSuccess(true);
