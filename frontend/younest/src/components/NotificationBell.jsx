@@ -11,10 +11,7 @@ const NotificationBell = () => {
   const [unreadCount, setUnreadCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleNewNotification = (data) => {
-  //   setNotifications((prev) => [data, ...prev]);
-  //   setUnreadCount((prev) => prev + 1);
-  // };
+
 
   useEffect(() => {
     if (!user || !user.access) {
