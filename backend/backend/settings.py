@@ -66,11 +66,11 @@ REST_FRAMEWORK = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://your-react-app.onrender.com",  # Production React app URL
+    "https://younest-react.onrender.com/",  # Production React app URL
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://your-react-app.onrender.com",  # Production React app URL
+    "https://younest-react.onrender.com/",  # Production React app URL
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Allow sending cookies (JWT/Auth)
