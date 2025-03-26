@@ -18,52 +18,6 @@ class ProductPagination(PageNumberPagination):
 
 
 
-# class ProductOrServiceListCreateAPIView(generics.ListCreateAPIView):
-#     queryset = ProductOrService.objects.all()
-#     serializer_class = ProductOrServiceSerializer
-#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-#     pagination_class = ProductPagination
-
-#     def create(self, request, *args, **kwargs):
-#         # Get the shop instance using the ID
-#         shop_id = request.data.get('shop')
-#         try:
-#             shop_instance = Shop.objects.get(id=shop_id)  # Get the Shop instance
-#         except Shop.DoesNotExist:
-#             return Response({'detail': 'Shop not found.'}, status=status.HTTP_400_BAD_REQUEST)
-
-#         # Handle file uploads
-#         files = request.FILES.getlist('images')  # Get the list of files
-
-#         # Remove images from the data to prevent passing them directly to the model
-#         data = {
-#             key: value for key, value in request.data.items() if key != 'images'
-#         }
-
-#         # Use serializer to create the product and attach the shop
-#         serializer = self.get_serializer(data=data)
-#         if serializer.is_valid():
-#             # Save the product or service instance without the images
-#             product_or_service_instance = serializer.save(shop=shop_instance)
-
-#             # Associate the images with the product (since image is a ManyToManyField)
-#             for file in files:
-#                 product_image = ProductImage.objects.create(image=file)
-#                 product_or_service_instance.image.add(product_image)
-                
-#             Notification.objects.create( 
-#                 user=shop_instance.owner, 
-#                 message=f'{shop_instance.name} added a product! (The message should be sent to users following your shop...)', 
-#                 notification_type='product' 
-#                 )
-
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# pos_create_view = ProductOrServiceListCreateAPIView.as_view()
-
-
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -202,7 +156,7 @@ def filter_products(request):
     else:
         products = ProductOrService.objects.filter(category=category)
     
-    baseurl = "http://127.0.0.1:8000"
+    baseurl = "https://younest.onrender.com"
     
     # Prepare response data
     data = [
@@ -247,7 +201,7 @@ def search(request):
         Q(category__icontains=query)
     ).order_by("-created_at")
     
-    baseurl = "http://127.0.0.1:8000"
+    baseurl = "https://younest.onrender.com"
     # Prepare response data
     data = {
         'results': [
@@ -302,7 +256,7 @@ class ShopProductsAPIView(APIView):
         serializer = ProductOrServiceSerializer(products, many=True)
         
         # Process images for each product to ensure they are in the correct format
-        base_url = 'http://localhost:8000'
+        base_url = 'https://younest.onrender.com'
         for product in serializer.data:
             if product.get('image'):
                 # Assuming 'image' is a list of dictionaries containing 'image' URLs
@@ -332,7 +286,7 @@ user_shops_view = UserShopsAPIView.as_view()
 def fetch_all_pos(request):
     products = ProductOrService.objects.all().order_by("-created_at")
    
-    baseurl = "http://127.0.0.1:8000"
+    baseurl = "https://younest.onrender.com"
     
     # Prepare response data
     data = [
