@@ -110,11 +110,13 @@ const Home = () => {
 
         <div className="row">
             {loading ? (
-              <div className="spinner-container">
-                <div className="spinner-border" role="status">
-                  <span className="sr-only">Loading...</span>
+              <center>
+                 <div className="spinner-container p-5 m-5">
+                <div className="spinner-border p-5 m-5" role="status">
+                  <span className="sr-only"></span>
                 </div>
               </div>
+              </center>
             ) : (
               !len ? (
                 <div style={{ margin: "20px" }}>No results found for {flt}</div>
