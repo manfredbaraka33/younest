@@ -10,7 +10,7 @@ const Feedback = () => {
     const handleSubmit=async (e)=>{
         e.preventDefault(); 
         try{
-            const response = await fetch('http://localhost:8000/api/feedback/',
+            const response = await fetch('https://younest.onrender.com/api/feedback/',
                 {
                     method:"POST",
                     headers:{
