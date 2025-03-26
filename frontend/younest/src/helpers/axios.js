@@ -178,10 +178,21 @@ export async function toggleSaveProduct(productId) {
 export const getNotifications = async () => {
   try {
       const response = await axiosService.get("notifications/");
-      return Array.isArray(response.data) ? response.data : []; // Return data directly
+      console.log("Here are the notifications",response.data)
+      // return Array.isArray(response.data) ? response.data : []; // Return data directly
+      return response.data.results
   } catch (error) {
       console.error("🚀 Error fetching notifications:", error);
       return [];
+  }
+};
+
+
+export const markAllNotificationsAsRead = async () => {
+  try {
+    await axiosService.post('notifications/mark-all-as-read/');
+  } catch (error) {
+    console.error("Error marking notifications as read:", error);
   }
 };
 

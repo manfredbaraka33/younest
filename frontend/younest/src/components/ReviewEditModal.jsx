@@ -44,7 +44,7 @@ const ReviewEditModal = ({ isOpen, onClose, product, reviewId,reviewComment,revi
             className="modal-content mx-1" // Apply Bootstrap modal styling with custom class
             overlayClassName="modal-backdrop" // Custom backdrop for dark overlay
         >
-            <div className="modal-content bg-light p-3 rounded">
+            <div className="modal-contentx p-3 rounded">
                 <div className="modal-header">
                     <h5 className="modal-title">Edit Review for {product.name}</h5>
                     <button type="button" className="close btn mx-3 btn-outline-danger" onClick={onClose}>

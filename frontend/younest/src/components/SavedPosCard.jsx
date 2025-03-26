@@ -55,7 +55,7 @@ const SavedPosCard = ({p}) => {
     };
 
   return (
-    <div className="pos-card">
+    <div className="pos-card border border-secondary rounded">
     <Link style={{textDecoration:"none"}} to={`/pos/${p.id}`}>
     
     <div className="pos-poster">
@@ -80,16 +80,16 @@ const SavedPosCard = ({p}) => {
         )}
     </div>
     </Link>
-    <div className="pos-info bg-light border">
+    <div className="pos-info p-2">
         <div className="container">
-            <div className="row text-light">
+            <div className="row">
                 <div className="col">
                     <Link style={{textDecoration:"none"}} to={`/pos/${p.id}`}>
                         <span style={{fontSize:"medium",fontWeight:"bold"}}>{truncateText(p.name,13)}</span>
                     </Link>
                 </div>
                 <div className="col-4">
-                    <p className="text-dark">{p.price}Tsh</p>
+                    <p className="">{p.price}Tsh</p>
                 </div>
             </div>
             <div className="row text-warning my-1">
@@ -104,7 +104,7 @@ const SavedPosCard = ({p}) => {
             <div className="row text-primary mb-3">
             <div style={{fontSize:"medium",fontWeight:"bold"}} className="col px-4 text-secondary"><FaMapMarkerAlt/> {p.shopDetails.location}</div>
             <div className="col text-end">
-                            <button onClick={handleToggleSave} className="save-button bg-light rounded">
+                            <button onClick={handleToggleSave} className="save-button  rounded">
                                 {isSaved ? <FaHeart color="red" /> : <FaRegHeart />}
                             </button>
                         </div>

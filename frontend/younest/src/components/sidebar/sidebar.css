@@ -4,4 +4,23 @@
   position: realtive;
 }
 
+.theme-button{
+  color: var(--text-color); 
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  border: 1px solid var(--text-color); 
+}
+
+
+.sidebar a{
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.btnLogin{
+  color: var(--text-color); 
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  border: 1px solid var(--text-color); 
+}
 

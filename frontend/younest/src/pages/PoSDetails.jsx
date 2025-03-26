@@ -228,7 +228,7 @@ const PoSDetails = () => {
                                     </div>
                                   ) : (
                                     // Otherwise, show the Write a Review button
-                                    <button onClick={openModalReview} className="btn btn-outline-dark">
+                                    <button onClick={openModalReview} className="btn btn-outline-primary">
                                       Write a Review
                                     </button>
                                   )}
@@ -246,7 +246,8 @@ const PoSDetails = () => {
             </div>
           </div>
           
-          <div className="container bg-light border rounded my-3">
+          <div className="container my-3 mb-4">
+            <h4>More about {product?.name}</h4>
             <p className="card-text">{product.description}</p>
           </div>
           <div className="container">

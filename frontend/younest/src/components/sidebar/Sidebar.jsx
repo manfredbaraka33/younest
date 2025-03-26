@@ -1,4 +1,4 @@
-
+import { useContext } from "react";
 import {
   RssFeed,
   Chat,
@@ -14,37 +14,39 @@ import { FaAmazonPay, FaHeart, FaHome,FaSave,FaSellcast,FaShoppingBasket } from 
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "./sidebar.css";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 
 export default function Sidebar({isSidebarOpen,setIsSidebarOpen}) {
 
   const {user,logout} = useAuth();
+  const { theme, setTheme } = useContext(ThemeContext); 
 
   return (
-    <div className={`sidebar bg-light py-3  text-dark ${isSidebarOpen ? 'open' : 'closed'}`}>
+    <div className={`sidebar py-3 ${isSidebarOpen ? 'open' : 'closed'}`}>
       <div className="sidebarWrapper mt-3" onClick={()=>setIsSidebarOpen(false)}>
         <ul className="sidebarList">
           <li className="sidebarListItem">
-          <Link  style={{textDecoration:"none",color:"black"}} to="/">
+          <Link  style={{textDecoration:"none"}} to="/">
             <FaHome className="sidebarIcon"/>
             <span className="sidebarListItemText">Home</span>
             </Link>
           </li>
           <li className="sidebarListItem">
-          <Link  style={{textDecoration:"none" ,color:"black"}} to="/shops">
+          <Link  style={{textDecoration:"none"}} to="/shops">
             <FaShoppingBasket className="sidebarIcon" /> 
             <span className="sidebarListItemText">Shops</span>
             </Link>
           </li>
           <li className="sidebarListItem">
-          <Link style={{textDecoration:"none" ,color:"black"}} to="/forsale">
+          <Link style={{textDecoration:"none"}} to="/forsale">
             <FaSellcast className="sidebarIcon"/>
             <span className="sidebarListItemText">For Sale</span>
           </Link>
           </li>
           {user? (
             <li className="sidebarListItem">
-            <Link style={{textDecoration:"none" ,color:"black"}} to="/saved">
+            <Link style={{textDecoration:"none"}} to="/saved">
               <FaHeart className="sidebarIcon"/>
               <span className="sidebarListItemText">Favorites</span>
             </Link>
@@ -65,7 +67,7 @@ export default function Sidebar({isSidebarOpen,setIsSidebarOpen}) {
             </>
            ):(
             <>
-            <Link to="/login">Log in</Link>
+            <Link to="/login"><button className="btnLogin">Log in</button></Link>
             </>
            )
 
@@ -74,6 +76,14 @@ export default function Sidebar({isSidebarOpen,setIsSidebarOpen}) {
         <Link to="/feedback" className="btn btn-warning my-4">
           Feedback
         </Link>
+
+
+        <div>
+        <button className="theme-button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}> 
+          {theme === "dark" ? "🌙 Dark Mode" : "☀️ Light Mode"} 
+        </button>
+        </div>
+
       </div>
     </div>
   );

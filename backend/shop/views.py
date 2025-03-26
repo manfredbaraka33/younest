@@ -18,6 +18,55 @@ class ProductPagination(PageNumberPagination):
 
 
 
+# class ProductOrServiceListCreateAPIView(generics.ListCreateAPIView):
+#     queryset = ProductOrService.objects.all()
+#     serializer_class = ProductOrServiceSerializer
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#     pagination_class = ProductPagination
+
+#     def create(self, request, *args, **kwargs):
+#         # Get the shop instance using the ID
+#         shop_id = request.data.get('shop')
+#         try:
+#             shop_instance = Shop.objects.get(id=shop_id)  # Get the Shop instance
+#         except Shop.DoesNotExist:
+#             return Response({'detail': 'Shop not found.'}, status=status.HTTP_400_BAD_REQUEST)
+
+#         # Handle file uploads
+#         files = request.FILES.getlist('images')  # Get the list of files
+
+#         # Remove images from the data to prevent passing them directly to the model
+#         data = {
+#             key: value for key, value in request.data.items() if key != 'images'
+#         }
+
+#         # Use serializer to create the product and attach the shop
+#         serializer = self.get_serializer(data=data)
+#         if serializer.is_valid():
+#             # Save the product or service instance without the images
+#             product_or_service_instance = serializer.save(shop=shop_instance)
+
+#             # Associate the images with the product (since image is a ManyToManyField)
+#             for file in files:
+#                 product_image = ProductImage.objects.create(image=file)
+#                 product_or_service_instance.image.add(product_image)
+                
+#             Notification.objects.create( 
+#                 user=shop_instance.owner, 
+#                 message=f'{shop_instance.name} added a product! (The message should be sent to users following your shop...)', 
+#                 notification_type='product' 
+#                 )
+
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# pos_create_view = ProductOrServiceListCreateAPIView.as_view()
+
+
+
+from django.core.exceptions import ObjectDoesNotExist
+
 class ProductOrServiceListCreateAPIView(generics.ListCreateAPIView):
     queryset = ProductOrService.objects.all()
     serializer_class = ProductOrServiceSerializer
@@ -50,18 +99,24 @@ class ProductOrServiceListCreateAPIView(generics.ListCreateAPIView):
             for file in files:
                 product_image = ProductImage.objects.create(image=file)
                 product_or_service_instance.image.add(product_image)
-                
-            Notification.objects.create( 
-                user=shop_instance.owner, 
-                message=f'{shop_instance.name} added a product! (The message should be sent to users following your shop...)', 
-                notification_type='product' 
+
+            # Notify the followers of the shop
+            followers = shop_instance.followers.all()  # Get all the followers of the shop
+            for follower in followers:
+                Notification.objects.create(
+                    user=follower,
+                    message=f'{shop_instance.name} added a new product! Check it out.',
+                    notification_type='product',
+                    related_id=product_or_service_instance.id
                 )
+
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 pos_create_view = ProductOrServiceListCreateAPIView.as_view()
+
 
 
 
@@ -327,14 +382,16 @@ class FollowUnfollowShopAPIView(APIView):
             Notification.objects.create( 
                 user=shop.owner, 
                 message=f'{user.username} unfollowed your shop!', 
-                notification_type='follow' 
+                notification_type='follow' ,
+                related_id=shop.id,
                 )
         else:
             shop.followers.add(user)  # Follow
             Notification.objects.create( 
                 user=shop.owner, 
                 message=f'{user.username} followed your shop!', 
-                notification_type='follow' 
+                notification_type='follow',
+                related_id=shop.id, 
                 )
 
         # Serialize and return updated shop data

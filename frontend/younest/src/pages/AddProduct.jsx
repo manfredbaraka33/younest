@@ -88,11 +88,7 @@ const AddProduct = ({ shop }) => {
             <div>An error occurred</div>
           </div>
         )}
-        {success && (
-          <div className="alert alert-success">
-            Congratulations! Your product has been added.
-          </div>
-        )}
+        
 
         <label htmlFor="name">Name:</label>
         <input
@@ -183,6 +179,13 @@ const AddProduct = ({ shop }) => {
         <button type="submit" className="btn btn-outline-primary my-3">
           Add
         </button>
+
+        {success && (
+          <div className="alert alert-success">
+            Congratulations! Your product has been added.
+          </div>
+        )}
+
       </form>
     </div>
   );

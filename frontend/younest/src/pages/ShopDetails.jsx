@@ -80,7 +80,7 @@ const ShopDetails = () => {
       <Link className='' to="/shops"><FaArrowLeft /></Link>
       <br /><br />
       <center>
-        <h2 className="bg-light border rounded p-2 text-primary">
+        <h2 className=" p-2 text-primary">
           <span>
             <img src={shop.logo} width="45px" height="45px" className="rounded-circle" alt="logo" />
           </span> {shop.name}
@@ -88,11 +88,12 @@ const ShopDetails = () => {
       </center>
       <div className="row">
         <div className="col my-1">
-          <div className="card">
-            <div className="card-body">
-              <p className="card-text">Location: {shop.location}</p>
-              <p className="card-text">Contacts: {shop.contact}</p>
-              <p>Followers: {followersCount}</p>
+          <div className="">
+            <div className="">
+              <center>
+              <span className="mx-2">Location: {shop.location}</span>
+              <span className="mx-2">Contacts: {shop.contact}</span>
+              <span className="mx-2">Followers: {followersCount}</span>
               {user ? (
                 <button
                   onClick={handleFollowUnfollow}
@@ -103,6 +104,7 @@ const ShopDetails = () => {
               ) : (
                 <p>Login <Link to="/login"> here </Link> to follow this shop</p>
               )}
+              </center>
               <br />
               
             </div>

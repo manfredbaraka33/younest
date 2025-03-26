@@ -44,5 +44,6 @@ urlpatterns = [
     path('reviews/update/<int:review_id>/', review_views.update_review, name='update-review'),
     path('reviews/<int:pk>/delete/', review_views.delete_review, name='delete-review'),
     path('user/details/<int:pk>/',user_views.get_other_user_details),
-    path('notifications/',notification_views.my_notifications)
+    path('notifications/',notification_views.my_notifications),
+    path('notifications/mark-all-as-read/', notification_views.mark_all_notifications_as_read, name='mark-all-notifications-read'),
 ]

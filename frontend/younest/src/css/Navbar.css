@@ -1,5 +1,8 @@
+
+
 .nav-bar {
-  background-color: #000000;
+  background-color: var(--bg-color); 
+  color: var(--text-color); 
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -13,6 +16,8 @@
 .nav-bar-brand {
   font-size: 1.5rem;
   font-weight: bold;
+  color: var(--text-color); 
+  background-color: var(--bg-color);
 }
 
 .nav-bar-links {

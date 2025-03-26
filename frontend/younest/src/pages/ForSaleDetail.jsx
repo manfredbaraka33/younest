@@ -181,8 +181,9 @@ const ForSaleDetail = () => {
             </div>
           )}
           </center>
-          <div className="container bg-light border rounded my-3">
-            <p className="card-text">{product.description}</p>
+          <div className="container rounded my-3">
+            <h4>More about {product.name}</h4>
+            <p className="">{product.description}</p>
           </div>
         </>
       )}

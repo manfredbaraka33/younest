@@ -33,10 +33,10 @@ const ReviewModal = ({ isOpen, onClose, product }) => {
             isOpen={isOpen} 
             onRequestClose={onClose} 
             ariaHideApp={false}
-            className="modal-content mx-1" // Apply Bootstrap modal styling with custom class
+            className="modal-contentx mx-1" // Apply Bootstrap modal styling with custom class
             overlayClassName="modal-backdrop" // Custom backdrop for dark overlay
         >
-            <div className="modal-content bg-light p-3 rounded">
+            <div className="modal-contentx  p-3">
                 <div className="modal-header">
                     <h5 className="modal-title">Submit Review for {product.name}</h5>
                     <button type="button" className="close btn mx-3 btn-outline-danger" onClick={onClose}>

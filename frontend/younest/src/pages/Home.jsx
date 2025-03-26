@@ -118,7 +118,7 @@ const handleSearch = () => {
             <center><h6 style={{marginTop:"5px"}}>{le} Result(s)</h6></center>
             <div className="pos-grid"> 
             {pos?.map((p) => (
-              <div className="col"><PoSCard p={p} key={p.id} /></div>
+              <div className="col" key={p.id}><PoSCard p={p}  /></div>
             ))}
           </div>
          </>

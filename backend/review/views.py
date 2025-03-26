@@ -8,7 +8,9 @@ from rest_framework.decorators import action,api_view
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView
 from user.models import MyUser
-
+from notification.models import Notification
+from shop.models import ProductOrService
+from rest_framework.exceptions import NotFound
 
 class ReviewListCreateView(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
@@ -22,16 +24,41 @@ class ReviewListCreateView(generics.ListCreateAPIView):
         return Review.objects.all()
 
     def perform_create(self, serializer):
-        """Ensure user is assigned to review"""
+        """Ensure user is assigned to review and create a notification"""
         user = self.request.user
         product_id = self.kwargs.get('product_id')
 
-       
-        # Proceed to create the review
-        serializer.save(user=self.request.user)
+        try:
+            # Ensure the product exists
+            product = ProductOrService.objects.get(id=product_id)
+            print("Here is the product",product)
+        except ProductOrService.DoesNotExist:
+            raise NotFound(detail="Product not found.")
 
-   
+        # Proceed to create the review
+        serializer.save(user=user)
+
+        try:
+            # Ensure the product has a shop and the shop has an owner
+            shop = product.shop  # Assuming Product has a ForeignKey to Shop
+            if shop and shop.owner:
+                # Create the notification for the shop owner
+                Notification.objects.create(
+                    user=shop.owner,  # Notify the owner of the shop
+                    message=f'{user.username} added a review on your product {product.name}!',
+                    notification_type='review',  # Type of notification
+                    related_id=product.id
+                )
+            else:
+                # Log a message if there is no shop or owner (optional handling)
+                print(f"Product '{product.name}' has no shop or owner. Notification not created.")
+        except AttributeError:
+            # Handle the case where `product.shop` does not exist or is None
+            print(f"Product '{product.name}' has no shop associated with it. Notification not created.")
+            
+            
 prod_reviews = ReviewListCreateView.as_view()
+
 
 @api_view(['GET'])
 def review_summary(request, product_id):

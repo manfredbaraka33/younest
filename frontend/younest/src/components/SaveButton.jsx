@@ -45,7 +45,7 @@ const SaveButton = ({ prodId }) => {
 
 
   return (
-    <button onClick={toggleSave} className="save-btn bg-light text-dark rounded">
+    <button onClick={toggleSave} className="save-btn">
     {saved ? <FaHeart color="red" /> : <FaRegHeart />}
 </button>
   )

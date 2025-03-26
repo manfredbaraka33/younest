@@ -63,16 +63,16 @@ function PoSCard3({ p }) {
                 )}
             </div>
             </Link>
-            <div className="pos-info bg-light border">
+            <div className="pos-info p-2">
                 <div className="container">
-                    <div className="row text-light">
+                    <div className="row">
                         <div className="col">
                             <Link style={{textDecoration:"none"}} to={`/pos/${p.id}`}>
                                 <h3>{truncateText(p.name,15)}</h3>
                             </Link>
                         </div>
                         <div className="col">
-                            <p className="text-dark">{p.price} Tsh</p>
+                            <p className="">{p.price} Tsh</p>
                         </div>
                     </div>
                    

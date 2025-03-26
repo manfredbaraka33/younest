@@ -67,7 +67,7 @@ const ProductReviews = ({ product }) => {
                                     className='mx-1'
                                 />
                                 </Link>
-                            )}<strong><Link className='text-dark' style={{textDecoration:"none"}} to={`/profile2/${review.user_id}/`}>{review.user}</Link></strong> | <TimeAgo datetime={review.created_at} /></p>
+                            )}<strong><Link className='' style={{textDecoration:"none"}} to={`/profile2/${review.user_id}/`}>{review.user}</Link></strong> | <TimeAgo datetime={review.created_at} /></p>
                             <br />
                             
                         </div>

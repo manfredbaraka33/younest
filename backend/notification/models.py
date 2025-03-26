@@ -13,9 +13,10 @@ class Notification(models.Model):
     user = models.ForeignKey(MyUser, related_name="notifications", on_delete=models.CASCADE) 
     message = models.CharField(max_length=255) 
     notification_type = models.CharField(choices=TYPES, max_length=50,null=True) 
+    related_id = models.IntegerField(null=True,blank=True)
     read = models.BooleanField(default=False) 
     created_at = models.DateTimeField(default=timezone.now) 
-
+ 
 
     def __str__(self): 
         return f"{self.message} for {self.user.username}" 

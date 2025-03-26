@@ -39,7 +39,7 @@ function ForSalecard({ product }) {
     };
 
     return (
-        <div className="pos-card">
+        <div className="pos-card border border-secondary">
             <Link style={{textDecoration:"none"}} to={`/product/${product.id}`}>
             <div className="pos-poster">
                 {product.image.length > 1 && (
@@ -63,7 +63,7 @@ function ForSalecard({ product }) {
                 )}
             </div>
             </Link>
-            <div className="pos-info bg-light border">
+            <div className="pos-info">
                 <div className="container p-2">
                     <div className="row">
                         <div className="col">
@@ -73,7 +73,7 @@ function ForSalecard({ product }) {
                             
                         </div>
                         <div className="col">
-                            <p className="text-dark">{product.price} Tsh</p>
+                            <p className="">{product.price} Tsh</p>
                         </div>
                     </div>
                     <div className="row text-warning">
@@ -82,7 +82,7 @@ function ForSalecard({ product }) {
                         </div>
                        
                     </div>
-                    <div className="row text-primary">
+                    <div className="row text-primary px-0">
                    
                     <div style={{fontSize:"larger",fontWeight:"bold"}} className="col px-4 text-secondary"><FaMapMarkerAlt/> {truncateText(product.location,15)}</div>
                     </div>
