@@ -10,6 +10,7 @@ const axiosService = axios.create({
   },
 });
 
+
 // Interceptor to attach the access token to each request
 axiosService.interceptors.request.use(async (config) => {
   const accessToken = getAccessToken();
