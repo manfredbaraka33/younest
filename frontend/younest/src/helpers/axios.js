@@ -52,7 +52,7 @@ const refreshAuthLogic = async (failedRequest) => {
   } catch (error) {
     // If refreshing the token fails, clear auth info and redirect to login
     localStorage.removeItem("auth");
-    window.location.href = "/login"; // Optional redirect to login
+    console.log("Refresh failed broooooh");
     return Promise.reject(error);
   }
 };
