@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0r%vw9sz+n%$o^od1oe_2&wt=eymg)xs_2#rty-u_@z%gk2ir+'
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["younest.onrender.com"]
 
 
 
@@ -66,13 +66,11 @@ REST_FRAMEWORK = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173"
- ]
+    "https://your-react-app.onrender.com",  # Production React app URL
+]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173"
+    "https://your-react-app.onrender.com",  # Production React app URL
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Allow sending cookies (JWT/Auth)
@@ -107,17 +105,10 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'backend.wsgi.application'
-ASGI_APPLICATION = 'backend.asgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
-CHANNEL_LAYERS = { 
-'default': { 
-'BACKEND': 'channels_redis.core.RedisChannelLayer', 
-'CONFIG': { 
-"hosts": [('127.0.0.1', 6379)], 
-}, 
-}, 
-} 
+
+
 
 
 # Database
@@ -129,22 +120,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# cat myproject/settings.py
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'younest',      
-#         'USER': 'postgres',     
-#         'PASSWORD': '1234',  
-#         'HOST': 'localhost',        
-#         'PORT': '5432',            
-#     }
-# }
-
-
-
 
 
 

@@ -1,0 +1,47 @@
+# Django and core ASGI support
+Django==5.1.6
+asgiref==3.8.1
+
+# Django REST Framework and JWT authentication
+djangorestframework==3.15.2
+djangorestframework_simplejwt==5.5.0
+
+# Cross-Origin Resource Sharing support
+django-cors-headers==4.7.0
+
+# Django Channels for WebSocket/ASGI support (if you use them)
+channels==4.2.0
+channels_redis==4.2.1
+daphne==4.1.2
+
+# Celery for asynchronous task processing (if you use it)
+celery==5.4.0
+billiard==4.2.1
+kombu==5.5.0
+
+# Production WSGI server
+gunicorn
+
+# Optional: Image processing (if your project uses it)
+pillow==11.1.0
+
+# JWT library (used by simplejwt)
+PyJWT==2.9.0
+
+# Common utility packages
+python-dateutil==2.9.0.post0
+sqlparse==0.5.3
+tzdata==2025.1
+
+# Optional: Redis support (if used as cache or broker)
+redis==5.2.1
+
+# Cryptography and security-related packages (often installed as transitive deps)
+cryptography==44.0.2
+cffi==1.17.1
+pyOpenSSL==25.0.0
+
+# Optional: Twisted and related packages (if your app uses advanced async/networking features)
+Twisted==24.11.0
+txaio==23.1.1
+zope.interface==7.2
