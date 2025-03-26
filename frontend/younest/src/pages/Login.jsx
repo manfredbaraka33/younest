@@ -77,7 +77,7 @@ const Login = () => {
         </form>
         <div className="mt-3 text-center">
           <p>
-            Don't have an account? <Link href="/register" className="text-decoration-none">Sign up</Link>
+            Don't have an account? <Link to="/register" className="text-decoration-none">Sign up</Link>
           </p>
         </div>
       </div>
