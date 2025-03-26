@@ -35,11 +35,11 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "https://younest-react.onrender.com/",
+    "https://younest-react.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://younest-react.onrender.com/",
+    "https://younest-react.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
