@@ -63,9 +63,9 @@ const NotificationBell = () => {
               <div style={{cursor: "pointer", fontSize: "x-large"}} onClick={toggleModal} className="col-1 text-danger"><FaTimes /></div>
             </div>
            
-            <ul>
+            <div classname="ul">
               {notifications.map((notification, index) => (
-                <li key={index}>
+                <dic className="li" key={index}>
 
                 {notification.notification_type == "follow"  &&
 
@@ -116,9 +116,9 @@ const NotificationBell = () => {
                   </Link>
                 )}
 
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
             <button className="btn btn-outline-danger mx-5" onClick={toggleModal}>Close</button>
           </div>
         </div>
