@@ -111,8 +111,8 @@ const Home = () => {
         <div className="row">
             {loading ? (
               <center>
-                 <div className="spinner-container p-5 m-5">
-                <div className="spinner-border p-5 m-5" role="status">
+                 <div className="spinner-container m-5">
+                <div className="spinner-border" role="status">
                   <span className="sr-only"></span>
                 </div>
               </div>
