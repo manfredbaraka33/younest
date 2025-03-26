@@ -82,7 +82,7 @@ function PoSCard({ p }) {
                     <div className="row my-1">
                         <div className="col">
                             <Link style={{textDecoration:"none"}} to={`/shop/${p.shop.id}`}>
-                            <span style={{fontSize:"medium",fontWeight:"bold"}} className="p-0"><img src={'http://localhost:8000' + p.shop.logo} className="rounded-circle mx-2" width="30px" height="30px" alt="logo" /></span>
+                            <span style={{fontSize:"medium",fontWeight:"bold"}} className="p-0"><img src={'https://younest.onrender.com' + p.shop.logo} className="rounded-circle mx-2" width="30px" height="30px" alt="logo" /></span>
                             {truncateText(p.shop.name,15)}
                             </Link>
                         </div>
