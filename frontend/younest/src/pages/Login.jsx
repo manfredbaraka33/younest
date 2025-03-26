@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 import { Spinner } from "react-bootstrap"; // Bootstrap spinner
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setusername] = useState("");
@@ -76,7 +77,7 @@ const Login = () => {
         </form>
         <div className="mt-3 text-center">
           <p>
-            Don't have an account? <a href="/register" className="text-decoration-none">Sign up</a>
+            Don't have an account? <Link href="/register" className="text-decoration-none">Sign up</Link>
           </p>
         </div>
       </div>
