@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
 DEBUG = False
-ALLOWED_HOSTS = ["younest.onrender.com"]
+ALLOWED_HOSTS = ["younest.onrender.com",".vercel.app"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
